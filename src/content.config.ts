@@ -13,7 +13,7 @@ const notes = defineCollection({
     created: z.coerce.date().optional(),
     updated: z.coerce.date().optional(),
     featured: z.boolean().default(false),
-    draft: z.boolean().default(true),
+    draft: z.boolean().default(false),
   }),
 });
 

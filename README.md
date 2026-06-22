@@ -35,10 +35,40 @@ draft: false
 ---
 ```
 
-- 没有 frontmatter 的旧笔记仍可被读取。
-- `draft` 默认是 `true`，只有明确设为 `false` 才会发布。
+- 没有 frontmatter 的旧笔记仍可被递归读取并自动发布。
+- 只有明确设置 `draft: true` 的笔记才会隐藏。
 - `slug` 一经发布应保持稳定，移动 Markdown 文件不会改变链接。
 - 重复的 `slug` 会使构建失败并给出错误。
+
+`notes/` 下可以任意嵌套目录，例如：
+
+```text
+notes/
+└── digital IC/
+    └── efforts/
+        ├── logical.md
+        └── parasitic.md
+```
+
+目录仅用于整理；未指定 `slug` 时，完整相对路径会用于生成稳定且唯一的页面路径标识。
+
+数学公式支持以下写法：
+
+```md
+行内公式：$E = mc^2$ 或 \(E = mc^2\)
+
+块级公式：
+
+$$
+g = \frac{N+2}{3}
+$$
+
+也可以使用：
+
+\[
+g = \frac{N+2}{3}
+\]
+```
 
 ## 部署
 
