@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import NoteCard from '../../components/NoteCard.astro';
+import TableOfContents from '../../components/TableOfContents.astro';
+import { render } from 'astro:content';
+import { formatDate, getPublishedNotes, tagHref, topicHref, type Note } from '../../lib/notes';
+
+export async function getStaticPaths() {
+  const notes = await getPublishedNotes();
+  return notes.map((note) => ({ params: { slug: note.slug }, props: { note, notes } }));
+}
+
+interface Props {
+  note: Note;
+  notes: Note[];
+}
+
+const { note, notes } = Astro.props;
+const { Content, headings } = await render(note.entry);
+const currentIndex = notes.findIndex((item) => item.slug === note.slug);
+const newer = currentIndex > 0 ? notes[currentIndex - 1] : undefined;
+const older = currentIndex < notes.length - 1 ? notes[currentIndex + 1] : undefined;
+const related = notes
+  .filter((item) => item.slug !== note.slug && item.topic === note.topic)
+  .slice(0, 3);
+const displayDate = note.updated ?? note.created;
+---
+
+<BaseLayout title={note.title} description={note.description}>
+  <article class="article" data-pagefind-body>
+    <header class="article-header shell narrow">
+      <a class="eyebrow" href={topicHref(note.topic)} data-pagefind-filter={`topic:${note.topic}`}>{note.topic}</a>
+      <h1 data-pagefind-meta="title">{note.title}</h1>
+      <p class="article-deck" data-pagefind-meta="description">{note.description}</p>
+      <div class="article-meta">
+        {displayDate && (
+          <span>
+            {note.updated ? '更新于' : '发布于'}
+            <time datetime={displayDate.toISOString()}>{formatDate(displayDate)}</time>
+          </span>
+        )}
+        {note.tags.length > 0 && (
+          <ul class="tag-list" aria-label="标签">
+            {note.tags.map((tag) => <li><a href={tagHref(tag)} data-pagefind-filter={`tag:${tag}`}>#{tag}</a></li>)}
+          </ul>
+        )}
+      </div>
+    </header>
+
+    <div class="article-layout shell">
+      <div class="prose">
+        <Content />
+      </div>
+      <TableOfContents headings={headings} />
+    </div>
+  </article>
+
+  <div class="shell narrow">
+    <nav class="note-navigation" aria-label="相邻笔记">
+      {older ? (
+        <a href={`/notes/${older.slug}/`}><small>上一篇</small><strong>← {older.title}</strong></a>
+      ) : <span></span>}
+      {newer && (
+        <a class="next" href={`/notes/${newer.slug}/`}><small>下一篇</small><strong>{newer.title} →</strong></a>
+      )}
+    </nav>
+  </div>
+
+  {related.length > 0 && (
+    <section class="section section-tinted">
+      <div class="shell">
+        <div class="section-heading">
+          <p class="kicker">KEEP EXPLORING</p>
+          <h2>同主题笔记</h2>
+        </div>
+        <div class="featured-grid">
+          {related.map((item) => <NoteCard note={item} compact />)}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <script>
+    document.querySelectorAll<HTMLElement>('.prose h2[id], .prose h3[id]').forEach((heading) => {
+      heading.classList.add('linked-heading');
+      heading.title = '复制这一节的链接';
+      heading.addEventListener('click', async () => {
+        const url = `${location.origin}${location.pathname}#${heading.id}`;
+        history.replaceState(null, '', `#${heading.id}`);
+        await navigator.clipboard?.writeText(url);
+        heading.dataset.copied = 'true';
+        window.setTimeout(() => delete heading.dataset.copied, 1200);
+      });
+    });
+  </script>
+</BaseLayout>

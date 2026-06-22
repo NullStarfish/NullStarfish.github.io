@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import NoteList from '../../components/NoteList.astro';
+import { getPublishedNotes, groupCounts, tagHref, topicHref } from '../../lib/notes';
+
+const notes = await getPublishedNotes();
+const topics = groupCounts(notes.map((note) => note.topic));
+const tags = groupCounts(notes.flatMap((note) => note.tags));
+---
+
+<BaseLayout title="学习笔记" description="按主题、标签与更新时间浏览全部学习笔记。">
+  <header class="page-hero shell">
+    <p class="kicker">NOTES</p>
+    <h1>学习笔记</h1>
+    <p>记录理解发生的过程，而不只是最后的答案。</p>
+  </header>
+
+  <div class="shell content-with-sidebar">
+    <aside class="filter-sidebar">
+      <section>
+        <h2>主题</h2>
+        <ul>
+          {topics.map((topic) => (
+            <li><a href={topicHref(topic.name)}><span>{topic.name}</span><small>{topic.count}</small></a></li>
+          ))}
+        </ul>
+      </section>
+      {tags.length > 0 && (
+        <section>
+          <h2>标签</h2>
+          <div class="tag-cloud">
+            {tags.map((tag) => <a href={tagHref(tag.name)}>#{tag.name}<small>{tag.count}</small></a>)}
+          </div>
+        </section>
+      )}
+    </aside>
+    <section>
+      <div class="list-heading">
+        <h2>全部笔记</h2>
+        <span>{notes.length} 篇</span>
+      </div>
+      <NoteList notes={notes} />
+    </section>
+  </div>
+</BaseLayout>

@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="搜索" description="全文搜索学习笔记。">
+  <header class="page-hero shell">
+    <p class="kicker">SEARCH</p>
+    <h1>搜索笔记</h1>
+    <p>从标题、摘要、标签和正文中寻找线索。</p>
+  </header>
+  <section class="search-section shell narrow">
+    <div id="search" aria-live="polite">
+      <p class="search-loading">正在载入搜索索引…</p>
+    </div>
+    <noscript>搜索功能需要启用 JavaScript。</noscript>
+  </section>
+
+  <link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
+  <script is:inline src="/pagefind/pagefind-ui.js"></script>
+  <script is:inline>
+    window.addEventListener('DOMContentLoaded', () => {
+      const target = document.querySelector('#search');
+      try {
+        if (target) target.innerHTML = '';
+        new PagefindUI({
+          element: '#search',
+          showSubResults: true,
+          showImages: false,
+          translations: {
+            placeholder: '输入关键词…',
+            clear_search: '清除',
+            load_more: '加载更多',
+            search_label: '搜索本站',
+            filters_label: '筛选',
+            zero_results: '没有找到 “[SEARCH_TERM]” 的相关笔记',
+            many_results: '找到 [COUNT] 条结果',
+            one_result: '找到 1 条结果',
+            alt_search: '没有找到 “[SEARCH_TERM]”，改为显示 “[DIFFERENT_TERM]” 的结果',
+            search_suggestion: '没有找到 “[SEARCH_TERM]”，可以尝试：',
+            searching: '正在搜索 “[SEARCH_TERM]”…',
+          },
+        });
+      } catch {
+        if (target) target.innerHTML = '<p class="search-loading">搜索索引仅在执行完整生产构建后可用。</p>';
+      }
+    });
+  </script>
+</BaseLayout>

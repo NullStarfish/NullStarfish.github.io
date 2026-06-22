@@ -1,0 +1,5 @@
+node_modules/
+dist/
+.astro/
+.codex-pet-runs/
+.DS_Store

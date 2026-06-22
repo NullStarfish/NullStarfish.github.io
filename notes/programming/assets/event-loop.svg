@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="360" viewBox="0 0 960 360" role="img" aria-labelledby="title desc">
+  <title id="title">事件循环示意图</title>
+  <desc id="desc">一个任务进入调用栈，清空微任务后再进入下一个任务。</desc>
+  <rect width="960" height="360" rx="24" fill="#f8f4ec"/>
+  <g font-family="sans-serif" text-anchor="middle">
+    <rect x="55" y="112" width="210" height="136" rx="12" fill="#a33d2d"/>
+    <text x="160" y="174" fill="#fffaf2" font-size="28">当前任务</text>
+    <text x="160" y="208" fill="#f4d8d1" font-size="18">调用栈</text>
+    <path d="M285 180h95" stroke="#6f756f" stroke-width="3"/>
+    <path d="m367 168 18 12-18 12" fill="none" stroke="#6f756f" stroke-width="3"/>
+    <rect x="400" y="112" width="210" height="136" rx="12" fill="#3f5a48"/>
+    <text x="505" y="174" fill="#fffaf2" font-size="28">清空微任务</text>
+    <text x="505" y="208" fill="#dce7df" font-size="18">Promise 回调</text>
+    <path d="M630 180h95" stroke="#6f756f" stroke-width="3"/>
+    <path d="m712 168 18 12-18 12" fill="none" stroke="#6f756f" stroke-width="3"/>
+    <rect x="745" y="112" width="160" height="136" rx="12" fill="#e8dfd2" stroke="#c9bbaa"/>
+    <text x="825" y="174" fill="#202522" font-size="28">下一任务</text>
+    <text x="825" y="208" fill="#6f756f" font-size="18">计时器 / 事件</text>
+  </g>
+</svg>

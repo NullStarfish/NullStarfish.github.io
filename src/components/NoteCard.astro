@@ -1,0 +1,28 @@
+---
+import type { Note } from '../lib/notes';
+import { formatDate, tagHref, topicHref } from '../lib/notes';
+
+interface Props {
+  note: Note;
+  compact?: boolean;
+}
+
+const { note, compact = false } = Astro.props;
+const date = note.updated ?? note.created;
+---
+
+<article class:list={['note-card', { compact }]} data-pagefind-filter={`topic:${note.topic}`}>
+  <div class="note-card-meta">
+    <a class="eyebrow" href={topicHref(note.topic)}>{note.topic}</a>
+    {date && <time datetime={date.toISOString()}>{formatDate(date)}</time>}
+  </div>
+  <h3><a href={`/notes/${note.slug}/`}>{note.title}</a></h3>
+  {!compact && <p>{note.description}</p>}
+  {note.tags.length > 0 && (
+    <ul class="tag-list" aria-label="标签">
+      {note.tags.slice(0, compact ? 2 : 4).map((tag) => (
+        <li><a href={tagHref(tag)}>#{tag}</a></li>
+      ))}
+    </ul>
+  )}
+</article>
