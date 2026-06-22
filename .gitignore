@@ -3,3 +3,4 @@ dist/
 .astro/
 .codex-pet-runs/
 .DS_Store
+books/
