@@ -1,0 +1,223 @@
+{
+  "main": {
+    "id": "1463ec76c3768e93",
+    "type": "split",
+    "children": [
+      {
+        "id": "d9f8dece22b371f0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b319085def4d86c9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "欢迎.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "欢迎"
+            }
+          },
+          {
+            "id": "58de125d2a1bbed6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "马尔科夫链.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "马尔科夫链"
+            }
+          }
+        ],
+        "currentTab": 1
+      },
+      {
+        "id": "ca59c682f644d892",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7dd2a153e04397d3",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "关系图谱"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "4b98390608d450e1",
+    "type": "split",
+    "children": [
+      {
+        "id": "e268fd87b232bf18",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "04b7f63e2338680c",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "7a7207e4dd530e42",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "252c2d9ff2a956d8",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "18c22014e5e92131",
+    "type": "split",
+    "children": [
+      {
+        "id": "0bc517592d1d8b81",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "53ef9e3cb0eb1989",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "马尔科夫链.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "马尔科夫链 的反向链接列表"
+            }
+          },
+          {
+            "id": "9bc620f0110ee598",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "马尔科夫链.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "马尔科夫链 的出链列表"
+            }
+          },
+          {
+            "id": "0138ee7417bc413e",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "f3e9850aa12f4e94",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "添加笔记属性"
+            }
+          },
+          {
+            "id": "5dd8d28f38ec5322",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "马尔科夫链.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "马尔科夫链 的大纲"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "bases:新建数据库": false
+    }
+  },
+  "active": "58de125d2a1bbed6",
+  "lastOpenFiles": [
+    "马尔科夫链.md",
+    "欢迎.md",
+    "概率推理"
+  ]
+}

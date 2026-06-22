@@ -7,7 +7,9 @@
     "dev": "astro dev",
     "build": "astro build && pagefind --site dist",
     "preview": "astro preview",
-    "check": "astro check"
+    "check": "astro check",
+    "notes:frontmatter": "node scripts/add-note-frontmatter.mjs --write",
+    "notes:frontmatter:dry": "node scripts/add-note-frontmatter.mjs"
   },
   "dependencies": {
     "@astrojs/markdown-remark": "^7.2.0",

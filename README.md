@@ -52,6 +52,15 @@ notes/
 
 目录仅用于整理；未指定 `slug` 时，完整相对路径会用于生成稳定且唯一的页面路径标识。
 
+批量加入旧笔记后，可以预览或写入缺失的 frontmatter：
+
+```bash
+pnpm notes:frontmatter:dry
+pnpm notes:frontmatter
+```
+
+脚本只处理尚无 frontmatter 的 Markdown，不会覆盖已经人工整理过的元数据。
+
 数学公式支持以下写法：
 
 ```md
