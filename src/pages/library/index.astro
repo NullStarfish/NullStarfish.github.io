@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BookCard from '../../components/BookCard.astro';
+import { getBooks } from '../../lib/books';
+
+const books = await getBooks();
+const tags = [...new Set(books.flatMap((book) => book.tags))].sort((a, b) => a.localeCompare(b, 'zh-CN'));
+---
+
+<BaseLayout title="书架" description="收藏并在线阅读 PDF 书籍与课程资料。">
+  <header class="page-hero shell">
+    <p class="kicker">LIBRARY</p>
+    <h1>我的书架</h1>
+    <p>收藏教材、论文和课程资料，在浏览器里随时翻阅。</p>
+  </header>
+
+  <section class="library-section shell">
+    {books.length > 0 ? (
+      <>
+        <div class="library-controls">
+          <label class="library-search">
+            <span class="sr-only">搜索书架</span>
+            <input type="search" placeholder="搜索书名或作者…" data-library-search />
+          </label>
+          <div class="library-tags" aria-label="按标签筛选">
+            <button type="button" class="active" data-library-filter="">全部 <span>{books.length}</span></button>
+            {tags.map((tag) => (
+              <button type="button" data-library-filter={tag.toLowerCase()}>#{tag}</button>
+            ))}
+          </div>
+        </div>
+        <p class="library-result-count" data-library-count>{books.length} 本</p>
+        <div class="book-grid">
+          {books.map((book, index) => <BookCard book={book} index={index} />)}
+        </div>
+        <div class="empty-state library-empty" data-library-empty hidden>
+          <span aria-hidden="true">◌</span><p>没有找到匹配的书籍。</p>
+        </div>
+      </>
+    ) : (
+      <div class="empty-state">
+        <span aria-hidden="true">□</span>
+        <p>把 PDF 放进 <code>books/</code> 后，它们会自动出现在这里。</p>
+      </div>
+    )}
+  </section>
+
+  <script>
+    const search = document.querySelector<HTMLInputElement>('[data-library-search]');
+    const filterButtons = [...document.querySelectorAll<HTMLButtonElement>('[data-library-filter]')];
+    const cards = [...document.querySelectorAll<HTMLElement>('[data-book-card]')];
+    const count = document.querySelector<HTMLElement>('[data-library-count]');
+    const empty = document.querySelector<HTMLElement>('[data-library-empty]');
+    const requestedTag = new URLSearchParams(location.search).get('tag')?.toLowerCase() ?? '';
+    let activeTag = filterButtons.some((button) => button.dataset.libraryFilter === requestedTag)
+      ? requestedTag
+      : '';
+
+    const update = () => {
+      const query = search?.value.trim().toLowerCase() ?? '';
+      let visible = 0;
+      for (const card of cards) {
+        const matchesQuery = !query || card.dataset.title?.includes(query);
+        const matchesTag = !activeTag || card.dataset.tags?.split('|').includes(activeTag);
+        card.hidden = !(matchesQuery && matchesTag);
+        if (!card.hidden) visible += 1;
+      }
+      if (count) count.textContent = `${visible} 本`;
+      if (empty) empty.hidden = visible !== 0;
+    };
+
+    search?.addEventListener('input', update);
+    filterButtons.forEach((button) => button.addEventListener('click', () => {
+      activeTag = button.dataset.libraryFilter ?? '';
+      filterButtons.forEach((item) => item.classList.toggle('active', item === button));
+      update();
+    }));
+
+    document.querySelectorAll<HTMLButtonElement>('[data-book-tag]').forEach((button) => {
+      button.addEventListener('click', () => {
+        activeTag = button.dataset.bookTag?.toLowerCase() ?? '';
+        filterButtons.forEach((item) => item.classList.toggle('active', item.dataset.libraryFilter === activeTag));
+        update();
+        document.querySelector('.library-controls')?.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    filterButtons.forEach((item) => item.classList.toggle('active', item.dataset.libraryFilter === activeTag));
+    update();
+  </script>
+</BaseLayout>

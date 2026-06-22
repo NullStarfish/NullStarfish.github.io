@@ -55,6 +55,7 @@ const imageURL = new URL(image, Astro.site);
         </a>
         <nav aria-label="主导航">
           <a href="/notes/" class:list={{ active: Astro.url.pathname.startsWith('/notes') }}>笔记</a>
+          <a href="/library/" class:list={{ active: Astro.url.pathname.startsWith('/library') }}>书架</a>
           <a href="/search/" class:list={{ active: Astro.url.pathname.startsWith('/search') }}>搜索</a>
           <a href="/about/" class:list={{ active: Astro.url.pathname.startsWith('/about') }}>关于</a>
         </nav>

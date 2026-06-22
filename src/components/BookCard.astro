@@ -1,0 +1,37 @@
+---
+import type { Book } from '../lib/books';
+import { formatFileSize } from '../lib/books';
+
+interface Props {
+  book: Book;
+  index: number;
+}
+
+const { book, index } = Astro.props;
+---
+
+<article
+  class="book-card"
+  data-book-card
+  data-tags={book.tags.join('|').toLowerCase()}
+  data-title={`${book.title} ${book.author ?? ''}`.toLowerCase()}
+>
+  <a class="book-cover" href={`/library/${book.slug}/`} aria-label={`阅读《${book.title}》`}>
+    <span class="book-index">{String(index + 1).padStart(2, '0')}</span>
+    <span class="book-glyph" aria-hidden="true">PDF</span>
+    <strong>{book.title}</strong>
+    {book.author && <small>{book.author}</small>}
+  </a>
+  <div class="book-info">
+    <div class="book-meta">
+      <span>{formatFileSize(book.size)}</span>
+      {book.featured && <span>精选</span>}
+    </div>
+    <p>{book.description}</p>
+    {book.tags.length > 0 && (
+      <ul class="tag-list" aria-label="书籍标签">
+        {book.tags.map((tag) => <li><button type="button" data-book-tag={tag}>#{tag}</button></li>)}
+      </ul>
+    )}
+  </div>
+</article>

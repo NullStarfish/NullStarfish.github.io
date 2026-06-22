@@ -61,6 +61,31 @@ pnpm notes:frontmatter
 
 脚本只处理尚无 frontmatter 的 Markdown，不会覆盖已经人工整理过的元数据。
 
+## PDF 书架
+
+只有 `books/**/*.pdf` 会进入书架；`notes/` 中的 PDF 仅作为笔记附件，不会生成书籍条目。
+
+书架支持递归目录。为 PDF 添加同名 JSON 即可设置标签和展示信息：
+
+```text
+books/
+└── digital-ic/
+    ├── cmos-design.pdf
+    └── cmos-design.json
+```
+
+```json
+{
+  "title": "CMOS Digital Integrated Circuits",
+  "author": "作者",
+  "description": "数字集成电路教材",
+  "tags": ["数字电路", "教材"],
+  "featured": false
+}
+```
+
+没有 JSON 时使用文件名作为书名，父目录会自动成为标签。
+
 数学公式支持以下写法：
 
 ```md
