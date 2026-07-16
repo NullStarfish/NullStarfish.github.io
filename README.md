@@ -16,18 +16,16 @@ pnpm check
 pnpm build
 ```
 
-## 笔记迁移
+## 编写文章
 
-原始笔记保存在 `notes/`。需要重新生成 Fuwari 内容集合时运行：
-
-```sh
-node scripts/migrate-notes-to-fuwari.mjs
-```
-
-迁移脚本会将笔记连同相邻图片和 PDF 复制到 `src/content/posts/`，并把旧的 `created/topic` 元数据转换为 Fuwari 使用的 `published/category`。
-
-新文章也可以直接通过以下命令创建：
+文章及其相邻图片、PDF 等资源统一保存在 `src/content/posts/`。新文章可以直接编辑该目录，或通过以下命令创建：
 
 ```sh
 pnpm new-post <filename>
+```
+
+如需统一旧式数学公式定界符，可以运行：
+
+```sh
+node scripts/normalize-math-delimiters.mjs
 ```

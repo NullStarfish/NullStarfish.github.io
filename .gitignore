@@ -26,6 +26,9 @@ package-lock.json
 bun.lockb
 yarn.lock
 
+# legacy local notes; published content lives in src/content/posts
+notes/
+
 # ide
 .idea
 *.iml

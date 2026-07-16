@@ -9,7 +9,7 @@ import { LinkPreset } from "./types/config";
 
 export const siteConfig: SiteConfig = {
 	title: "Null Starfish",
-	subtitle: "个人主页与持续生长的学习笔记",
+	subtitle: "欢迎来到我的个人主页！",
 	lang: "zh_CN", // Language code, e.g. 'en', 'zh_CN', 'ja', etc.
 	themeColor: {
 		hue: 220, // Default hue for the theme color, from 0 to 360. e.g. red: 0, teal: 200, cyan: 250, pink: 345
@@ -53,7 +53,7 @@ export const navBarConfig: NavBarConfig = {
 export const profileConfig: ProfileConfig = {
 	avatar: "/avatar.jpg",
 	name: "Null Starfish",
-	bio: "记录理解、问题，以及它们之间逐渐长出的连接。",
+	bio: "冲激！冲激！冲激！",
 	links: [
 		{
 			name: "GitHub",

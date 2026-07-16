@@ -1,9 +1,9 @@
 ---
 title: "flash"
 published: 2026-07-01
-description: "你记得的“每个管子都是一个单元”基本对，但后面要改一下："
+description: "flash category && topology"
 tags: []
-category: "digital IC"
+category: "数字集成电路"
 draft: false
 ---
 你记得的“每个管子都是一个单元”基本对，但后面要改一下：

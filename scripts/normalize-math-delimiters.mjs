@@ -1,7 +1,7 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
 
-const roots = ["notes", "src/content/posts"];
+const roots = ["src/content/posts"];
 
 async function walk(directory) {
 	const entries = await fs.readdir(directory, { withFileTypes: true });
