@@ -4,6 +4,7 @@ published: 2026-07-16
 description: "理解 GAS statement、instruction、directive、label、局部符号、数字标签和表达式。"
 tags: ["AS", "Assembly", "Symbol"]
 category: "AS"
+series: { name: "GNU AS 汇编器", order: 2 }
 draft: false
 ---
 GAS 源文件由 statement 组成。每条 statement 通常在换行处结束，其形式可以是：
@@ -148,4 +149,3 @@ RV32E 只有 `x0` 到 `x15`。使用 `s2`、`a6` 等寄存器会在 `-march=rv32
 - [GNU as Statements](https://sourceware.org/binutils/docs/as/Statements.html)
 - [GNU as Symbols](https://sourceware.org/binutils/docs/as/Symbols.html)
 - [GNU as Expressions](https://sourceware.org/binutils/docs/as/Expressions.html)
-

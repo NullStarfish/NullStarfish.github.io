@@ -4,6 +4,7 @@ published: 2026-07-16
 description: "理解 label、global、weak、hidden、type、size、equ 和 common symbol 如何进入 ELF 符号表。"
 tags: ["AS", "ELF", "Symbol"]
 category: "AS"
+series: { name: "GNU AS 汇编器", order: 4 }
 draft: false
 ---
 Symbol 是 assembler、linker 和 debugger 之间的重要接口。一个 ELF symbol 主要包含：
@@ -165,4 +166,3 @@ riscv64-linux-gnu-objdump -t file.o
 - [GNU as .type](https://sourceware.org/binutils/docs/as/Type.html)
 - [GNU as .size](https://sourceware.org/binutils/docs/as/Size.html)
 - [GNU as .weak](https://sourceware.org/binutils/docs/as/Weak.html)
-

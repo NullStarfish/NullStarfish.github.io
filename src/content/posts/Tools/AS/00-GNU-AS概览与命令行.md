@@ -4,6 +4,7 @@ published: 2026-07-16
 description: "理解 GNU assembler 在工具链中的位置、输入输出、.s 与 .S 的差异，以及 RISC-V 常用汇编参数。"
 tags: ["AS", "Assembler", "RISC-V"]
 category: "AS"
+series: { name: "GNU AS 汇编器", order: 1 }
 draft: false
 ---
 GNU `as`，通常称为 GAS，是 GNU Binutils 中的 assembler。它读取汇编源文件，将
@@ -140,4 +141,3 @@ man as
 
 - [GNU assembler 官方手册](https://sourceware.org/binutils/docs/as.html)
 - [GNU as RISC-V Dependent Features](https://sourceware.org/binutils/docs/as/RISC_002dV_002dDependent.html)
-

@@ -4,6 +4,7 @@ published: 2026-07-16
 description: "使用 .cfi directive 描述手写汇编栈帧，使 debugger 和 unwinder 能恢复调用链。"
 tags: ["AS", "DWARF", "CFI"]
 category: "AS"
+series: { name: "GNU AS 汇编器", order: 9 }
 draft: false
 ---
 手写汇编正确保存寄存器并不代表 debugger 能理解它。Call Frame Information，CFI，
@@ -139,4 +140,3 @@ info frame
 ### 参考
 
 - [GNU as CFI Directives](https://sourceware.org/binutils/docs/as/CFI-directives.html)
-

@@ -4,6 +4,7 @@ published: 2026-07-16
 description: "将 MEMORY、SECTIONS、VMA/LMA、运行时符号和安全断言组合为一份完整 RISC-V 裸机链接脚本。"
 tags: ["LD", "RISC-V", "Bare Metal"]
 category: "LD"
+series: { name: "GNU LD 与链接脚本", order: 9 }
 draft: false
 ---
 下面是一份从 Flash 启动、在 RAM 中维护 `.data`、`.bss`、heap 和 stack 的完整示例。
@@ -195,4 +196,3 @@ ${CROSS}objdump -dr app.elf
 ### 参考
 
 - [GNU ld 官方手册](https://sourceware.org/binutils/docs/ld.html)
-

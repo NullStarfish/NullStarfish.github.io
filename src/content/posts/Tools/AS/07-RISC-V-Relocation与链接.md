@@ -4,6 +4,7 @@ published: 2026-07-16
 description: "理解 assembler 为什么留下 relocation，以及 RISC-V HI20/LO12、PC-relative、CALL 和 relaxation 如何配合 linker。"
 tags: ["AS", "RISC-V", "Relocation"]
 category: "AS"
+series: { name: "GNU AS 汇编器", order: 8 }
 draft: false
 ---
 Assembler 只能确定当前 `.o` 内部部分地址。外部 symbol、跨 section 地址和最终内存
@@ -148,4 +149,3 @@ riscv64-linux-gnu-readelf -rW app.elf
 
 - [GNU as RISC-V Modifiers](https://sourceware.org/binutils/docs/as/RISC_002dV_002dModifiers.html)
 - [GNU ld RISC-V](https://sourceware.org/binutils/docs/ld/RISC_002dV.html)
-

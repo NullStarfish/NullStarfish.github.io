@@ -4,6 +4,7 @@ published: 2026-07-17
 description: "通过 CSR、cycle counter、fence、MMIO 和原子交换实例练习 RISC-V inline asm。"
 tags: ["C", "Inline Assembly", "RISC-V"]
 category: "C"
+series: { name: "C 与 RISC-V 内联汇编", order: 5 }
 draft: false
 ---
 
@@ -140,4 +141,3 @@ memory order 和 target 正确选择 instruction，并让 sanitizer 理解同步
 
 - [GCC: RISC-V Machine Constraints](https://gcc.gnu.org/onlinedocs/gcc/Machine-Constraints.html)
 - [RISC-V Assembly Programmer's Manual](https://github.com/riscv-non-isa/riscv-asm-manual)
-

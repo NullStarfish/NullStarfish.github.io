@@ -4,6 +4,7 @@ published: 2026-07-17
 description: "理解 r、m、i、匹配约束、alternative 和 early-clobber 如何参与寄存器分配。"
 tags: ["C", "Inline Assembly", "Constraint"]
 category: "C"
+series: { name: "C 与 RISC-V 内联汇编", order: 3 }
 draft: false
 ---
 
@@ -112,4 +113,3 @@ asm("/* target-specific template */"
 
 - [GCC: Constraints for asm Operands](https://gcc.gnu.org/onlinedocs/gcc/Constraints.html)
 - [GCC: Machine Constraints](https://gcc.gnu.org/onlinedocs/gcc/Machine-Constraints.html)
-

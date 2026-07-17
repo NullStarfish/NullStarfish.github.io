@@ -17,6 +17,46 @@ async function getRawSortedPosts() {
 	return sorted;
 }
 
+export type SeriesContext = {
+	name: string;
+	current: number;
+	total: number;
+	posts: PostForList[];
+};
+
+function getSeriesPosts(posts: CollectionEntry<"posts">[], seriesName: string) {
+	const seriesPosts = posts
+		.filter((post) => post.data.series?.name === seriesName)
+		.sort((a, b) => (a.data.series?.order ?? 0) - (b.data.series?.order ?? 0));
+
+	const usedOrders = new Set<number>();
+	for (const post of seriesPosts) {
+		const order = post.data.series?.order;
+		if (order === undefined) continue;
+		if (usedOrders.has(order)) {
+			throw new Error(`Series "${seriesName}" has duplicate order ${order}`);
+		}
+		usedOrders.add(order);
+	}
+
+	return seriesPosts;
+}
+
+export function getSeriesContext(
+	entry: CollectionEntry<"posts">,
+	posts: CollectionEntry<"posts">[],
+): SeriesContext | undefined {
+	if (!entry.data.series) return undefined;
+
+	const seriesPosts = getSeriesPosts(posts, entry.data.series.name);
+	return {
+		name: entry.data.series.name,
+		current: seriesPosts.findIndex((post) => post.slug === entry.slug) + 1,
+		total: seriesPosts.length,
+		posts: seriesPosts.map((post) => ({ slug: post.slug, data: post.data })),
+	};
+}
+
 export async function getSortedPosts() {
 	const sorted = await getRawSortedPosts();
 
@@ -27,6 +67,21 @@ export async function getSortedPosts() {
 	for (let i = 0; i < sorted.length - 1; i++) {
 		sorted[i].data.prevSlug = sorted[i + 1].slug;
 		sorted[i].data.prevTitle = sorted[i + 1].data.title;
+	}
+
+	const seriesNames = new Set(
+		sorted.flatMap((post) => (post.data.series ? [post.data.series.name] : [])),
+	);
+	for (const seriesName of seriesNames) {
+		const seriesPosts = getSeriesPosts(sorted, seriesName);
+		for (let i = 0; i < seriesPosts.length; i++) {
+			const previous = seriesPosts[i - 1];
+			const next = seriesPosts[i + 1];
+			seriesPosts[i].data.nextSlug = previous?.slug ?? "";
+			seriesPosts[i].data.nextTitle = previous?.data.title ?? "";
+			seriesPosts[i].data.prevSlug = next?.slug ?? "";
+			seriesPosts[i].data.prevTitle = next?.data.title ?? "";
+		}
 	}
 
 	return sorted;

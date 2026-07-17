@@ -4,6 +4,7 @@ published: 2026-07-16
 description: "理解 RISC-V GAS 中的伪指令、ISA 选择、PIC、relaxation、object attribute 和自定义指令编码。"
 tags: ["AS", "RISC-V", "Pseudo Instruction"]
 category: "AS"
+series: { name: "GNU AS 汇编器", order: 7 }
 draft: false
 ---
 RISC-V assembly 中既有真实 ISA instruction，也有 assembler pseudoinstruction。伪指令
@@ -147,4 +148,3 @@ riscv64-linux-gnu-objdump -dr -M no-aliases test.o
 
 - [GNU as RISC-V Directives](https://sourceware.org/binutils/docs/as/RISC_002dV_002dDirectives.html)
 - [RISC-V Assembly Programmer's Manual](https://github.com/riscv-non-isa/riscv-asm-manual)
-

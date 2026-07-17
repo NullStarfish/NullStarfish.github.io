@@ -4,6 +4,7 @@ published: 2026-07-16
 description: "使用 MEMORY 描述 ROM、RAM 等物理地址区域，并将输出段约束到指定 region。"
 tags: ["LD", "Linker Script", "Memory"]
 category: "LD"
+series: { name: "GNU LD 与链接脚本", order: 3 }
 draft: false
 ---
 `MEMORY` 用来描述目标机器可用的物理地址区域。它不会创建或初始化真实内存，只是
@@ -138,4 +139,3 @@ SECTIONS
 ### 参考
 
 - [GNU ld MEMORY Command](https://sourceware.org/binutils/docs/ld/MEMORY.html)
-

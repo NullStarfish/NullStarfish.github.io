@@ -1,0 +1,57 @@
+---
+import type { SeriesContext } from "@utils/content-utils";
+import { getPostUrlBySlug } from "@utils/url-utils";
+import { Icon } from "astro-icon/components";
+
+interface Props {
+	series: SeriesContext;
+	currentSlug: string;
+}
+
+const { series, currentSlug } = Astro.props;
+---
+
+<section class="mb-7 border-y border-[var(--line-divider)] py-4 onload-animation" aria-labelledby="series-title">
+    <div class="mb-3 flex items-center justify-between gap-4">
+        <div class="flex min-w-0 items-center gap-2">
+            <Icon name="material-symbols:format-list-numbered-rounded" class="shrink-0 text-2xl text-[var(--primary)]" />
+            <div class="min-w-0">
+                <div class="text-xs font-medium text-neutral-500 dark:text-neutral-400">合集</div>
+                <h2 id="series-title" class="truncate text-base font-bold text-black/80 dark:text-white/80">
+                    {series.name}
+                </h2>
+            </div>
+        </div>
+        <div class="shrink-0 text-sm font-medium text-neutral-500 dark:text-neutral-400">
+            {series.current} / {series.total}
+        </div>
+    </div>
+
+    <ol class="grid gap-1 md:grid-cols-2">
+        {series.posts.map((post) => {
+            const isCurrent = post.slug === currentSlug;
+            return (
+                <li>
+                    <a
+                        href={getPostUrlBySlug(post.slug)}
+                        aria-current={isCurrent ? "page" : undefined}
+                        class:list={[
+                            "flex min-h-9 items-center gap-3 px-2 py-1.5 transition-colors",
+                            isCurrent
+                                ? "font-bold text-[var(--primary)]"
+                                : "text-black/65 hover:text-[var(--primary)] dark:text-white/65",
+                        ]}
+                    >
+                        <span class:list={[
+                            "w-6 shrink-0 text-right font-mono text-xs",
+                            isCurrent ? "text-[var(--primary)]" : "text-neutral-400 dark:text-neutral-500",
+                        ]}>
+                            {post.data.series?.order}
+                        </span>
+                        <span class="min-w-0 leading-5">{post.data.title}</span>
+                    </a>
+                </li>
+            );
+        })}
+    </ol>
+</section>

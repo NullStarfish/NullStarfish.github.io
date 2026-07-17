@@ -4,6 +4,7 @@ published: 2026-07-17
 description: "理解内联汇编中的控制流出口，以及 basic asm、top-level asm 和 naked function 的边界。"
 tags: ["C", "Inline Assembly", "Control Flow"]
 category: "C"
+series: { name: "C 与 RISC-V 内联汇编", order: 6 }
 draft: false
 ---
 
@@ -99,4 +100,3 @@ clobber 和 qualifier。较长的 function、复杂 `.cfi`、条件汇编和 sec
 
 - [GCC: Goto Labels](https://gcc.gnu.org/onlinedocs/gcc/Extended-Asm.html)
 - [Clang Language Extensions: asm goto](https://clang.llvm.org/docs/LanguageExtensions.html#asm-goto-with-output-constraints)
-

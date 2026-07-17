@@ -4,6 +4,7 @@ published: 2026-07-16
 description: "掌握输出段描述、输入文件与 section 通配、排序、KEEP、COMMON 和 DISCARD。"
 tags: ["LD", "Linker Script", "Sections"]
 category: "LD"
+series: { name: "GNU LD 与链接脚本", order: 4 }
 draft: false
 ---
 `SECTIONS` 决定输入 section 如何合并为输出 section，以及输出 section 在地址空间中的
@@ -176,4 +177,3 @@ ld --gc-sections
 
 - [GNU ld Input Section](https://sourceware.org/binutils/docs/ld/Input-Section.html)
 - [GNU ld SECTIONS](https://sourceware.org/binutils/docs/ld/SECTIONS.html)
-

@@ -4,6 +4,7 @@ published: 2026-07-16
 description: "使用 .section、标准段、ELF flags、section type 和 section stack 组织目标文件。"
 tags: ["AS", "ELF", "Section"]
 category: "AS"
+series: { name: "GNU AS 汇编器", order: 3 }
 draft: false
 ---
 Section 是 assembler 输出和 linker 输入的基本布局单位。同一 section 中的字节保持
@@ -141,4 +142,3 @@ riscv64-linux-gnu-objdump -h start.o
 
 - [GNU as Sections and Relocation](https://sourceware.org/binutils/docs/as/Sections.html)
 - [GNU as .section](https://sourceware.org/binutils/docs/as/Section.html)
-

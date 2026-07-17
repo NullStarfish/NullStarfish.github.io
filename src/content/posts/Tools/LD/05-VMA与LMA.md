@@ -4,6 +4,7 @@ published: 2026-07-16
 description: "区分 section 的运行地址与加载地址，并实现从 ROM 搬运 data、清零 bss 的裸机启动布局。"
 tags: ["LD", "Linker Script", "VMA", "LMA"]
 category: "LD"
+series: { name: "GNU LD 与链接脚本", order: 6 }
 draft: false
 ---
 每个可加载输出段都可能有两个地址：
@@ -141,4 +142,3 @@ objdump -h app.elf
 
 - [GNU ld Basic Linker Script Concepts](https://sourceware.org/binutils/docs/ld/Basic-Script-Concepts.html)
 - [GNU ld Output Section LMA](https://sourceware.org/binutils/docs/ld/Output-Section-LMA.html)
-

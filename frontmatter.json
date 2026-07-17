@@ -60,6 +60,23 @@
           "title": "language",
           "name": "language",
           "type": "string"
+        },
+        {
+          "title": "series",
+          "name": "series",
+          "type": "fields",
+          "fields": [
+            {
+              "title": "name",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "title": "order",
+              "name": "order",
+              "type": "number"
+            }
+          ]
         }
       ]
     }

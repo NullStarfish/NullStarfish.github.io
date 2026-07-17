@@ -4,6 +4,7 @@ published: 2026-07-17
 description: "掌握 extended asm 的五段结构、命名操作数、输入输出和读写操作数。"
 tags: ["C", "Inline Assembly", "Operand"]
 category: "C"
+series: { name: "C 与 RISC-V 内联汇编", order: 2 }
 draft: false
 ---
 
@@ -132,4 +133,3 @@ static inline void divrem_u32(uint32_t a, uint32_t b,
 ### 参考
 
 - [GCC: Extended Asm](https://gcc.gnu.org/onlinedocs/gcc/Extended-Asm.html)
-

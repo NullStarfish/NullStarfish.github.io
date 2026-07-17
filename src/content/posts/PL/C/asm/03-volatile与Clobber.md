@@ -4,6 +4,7 @@ published: 2026-07-17
 description: "区分 asm volatile、memory clobber、compiler barrier 和 CPU fence，并正确声明副作用。"
 tags: ["C", "Inline Assembly", "Memory Ordering"]
 category: "C"
+series: { name: "C 与 RISC-V 内联汇编", order: 4 }
 draft: false
 ---
 
@@ -120,4 +121,3 @@ static inline uint32_t load_word(const uint32_t *p) {
 
 - [GCC: Volatile and Clobbers](https://gcc.gnu.org/onlinedocs/gcc/Extended-Asm.html)
 - [RISC-V ISA Manual](https://github.com/riscv/riscv-isa-manual)
-

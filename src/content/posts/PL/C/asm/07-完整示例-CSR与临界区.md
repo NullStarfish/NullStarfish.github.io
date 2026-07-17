@@ -4,6 +4,7 @@ published: 2026-07-17
 description: "将 CSR inline asm 封装成可复用接口，并分析 interrupt critical section 中的编译器与硬件语义。"
 tags: ["C", "Inline Assembly", "CSR"]
 category: "C"
+series: { name: "C 与 RISC-V 内联汇编", order: 8 }
 draft: false
 ---
 
@@ -118,4 +119,3 @@ riscv64-linux-gnu-gcc \
 
 - [GCC: Extended Asm](https://gcc.gnu.org/onlinedocs/gcc/Extended-Asm.html)
 - [RISC-V Privileged Architecture](https://github.com/riscv/riscv-isa-manual)
-
