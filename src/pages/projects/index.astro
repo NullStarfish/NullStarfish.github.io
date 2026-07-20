@@ -1,0 +1,19 @@
+---
+import ProjectCard from "@components/ProjectCard.astro";
+import { getCollection } from "astro:content";
+import MainGridLayout from "../../layouts/MainGridLayout.astro";
+
+const projects = (await getCollection("projects", ({ data }) => !data.draft && data.entryType === "project"))
+	.sort((a, b) => Number(b.data.featured) - Number(a.data.featured) || b.data.published.valueOf() - a.data.published.valueOf());
+---
+
+<MainGridLayout title="项目" description="一路走来，辛苦了！">
+	<header class="max-w-3xl pt-8 md:pt-14 pb-10 md:pb-14">
+		<p class="text-sm font-bold text-[var(--primary)] mb-4">Projects & case studies</p>
+		<h1 class="text-4xl md:text-5xl leading-tight tracking-tight font-bold text-90 mb-6">做过的事，<br /><span class="text-[var(--primary)]">留下的方法。</span></h1>
+		<p class="text-lg text-75 leading-8">看看收获吧</p>
+	</header>
+	<div class="grid md:grid-cols-2 gap-5 pb-16">
+		{projects.map(project => <ProjectCard project={project} />)}
+	</div>
+</MainGridLayout>

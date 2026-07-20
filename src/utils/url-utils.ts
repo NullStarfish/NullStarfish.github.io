@@ -13,7 +13,7 @@ function joinUrl(...parts: string[]): string {
 }
 
 export function getPostUrlBySlug(slug: string): string {
-	return url(`/posts/${slug}/`);
+	return url("/posts/" + normalizeContentSlug(slug) + "/");
 }
 
 export function getTagUrl(tag: string): string {
@@ -41,4 +41,15 @@ export function getDir(path: string): string {
 
 export function url(path: string) {
 	return joinUrl("", import.meta.env.BASE_URL, path);
+}
+
+export function normalizeContentSlug(slug: string): string {
+	return slug
+		.replace(/\.mdx?$/i, "")
+		.replace(/^\/+|\/+$/g, "")
+		.toLowerCase();
+}
+
+export function getProjectUrlById(id: string): string {
+	return url("/projects/" + normalizeContentSlug(id) + "/");
 }
